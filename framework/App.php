@@ -28,8 +28,6 @@ class App
             ? $options['templatesPath']
             : $this->defaultOptions['templatesPath'];
 
-        error_log(print_r($this->router,1));
-
         $this->view->setTemplatesDirectory($templatesPath);
     }
 
@@ -177,12 +175,9 @@ class App
         try {
             ob_start();
             $dispatched = false;
-            error_log(print_r($_SERVER,1));
             if (isset($_SERVER['PATH_INFO'])) {
                 error_log(print_r($_SERVER['PATH_INFO'],1));
             }
-            error_log(print_r($method,1));
-            error_log(print_r($pathInfo,1));
             $matchedRoutes = $this->router->getMatchedRoutes($method, $pathInfo);
             foreach ($matchedRoutes as $route) {
                 try {

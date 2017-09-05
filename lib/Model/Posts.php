@@ -21,8 +21,8 @@ class Posts implements ModelInterface
     {
         $connection = self::getConnection();
 
-        $title = isset($data['Title']) ? $data['Title'] : '';
-        $text  = isset($data['Text']) ? $data['Text'] : '';
+        $title = isset($data['title']) ? $data['title'] : '';
+        $text  = isset($data['text']) ? $data['text'] : '';
 
         $statement = $connection->prepare(
             " INSERT INTO ".self::TABLE_NAME."(
@@ -50,20 +50,23 @@ class Posts implements ModelInterface
     {
         $connection = self::getConnection();
 
-        $title = isset($data['Name']) ? $data['Name'] : '';
-        $text  = isset($data['Text']) ? $data['Text'] : '';
+        $title = isset($data['name']) ? $data['name'] : '';
+        $text  = isset($data['text']) ? $data['text'] : '';
+        $author  = isset($data['author']) ? $data['author'] : '';
 
         $statement = $connection->prepare(
             "UPDATE ".self::TABLE_NAME."
              SET
                 name = :name,
-                text = :text
+                text = :text,
+                author = :author
              WHERE id = :id"
         );
 
         $statement->bindValue(':id', $id, \PDO::PARAM_INT);
         $statement->bindValue(':name', $title);
         $statement->bindValue(':text', $text);
+        $statement->bindValue(':author', $author);
 
         return $statement->execute();
     }
