@@ -1,0 +1,23 @@
+{
+  "name": "mvc-framework",
+  "homepage": "https://github.com/Nchalenko/WebAcademy-MVC-framework",
+  "authors": [
+    "Nikita Chalenko <nick.chalenko@gmail.com>"
+  ],
+  "description": "MVC Framework for Web Academy",
+  "main": "main.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "*",
+    "jquery": "*",
+    "chosen": "*",
+    "components-font-awesome": "4.7.*"
+  }
+}
